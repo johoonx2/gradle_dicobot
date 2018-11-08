@@ -3,8 +3,6 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-mainClassName = 'com.bot.discord.botController'
-
 sourceCompatibility = 1.8
 
 repositories {
