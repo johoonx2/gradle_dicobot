@@ -1,10 +1,25 @@
 package com.bot.discord;
 
-public class botController {
-    public static void main(String[] args){
-        if(args.length > 0)
-            System.out.println(args[0]);
-        else
-            System.out.println("HelloWorld");
+import net.dv8tion.jda.core.AccountType;
+import net.dv8tion.jda.core.JDABuilder;
+import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.exceptions.RateLimitedException;
+import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import javax.security.auth.login.LoginException;
+
+public class botController extends ListenerAdapter{
+    public static void main(String[] args) throws LoginException, RateLimitedException{
+        if(args.length > 0) {
+            new JDABuilder(AccountType.BOT)
+                    .setToken(args[0])
+                    .buildAsync();
+        }else {
+            System.out.println("Not found Token");
+        }
+    }
+
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event){
+        System.out.println("Received!");
     }
 }
